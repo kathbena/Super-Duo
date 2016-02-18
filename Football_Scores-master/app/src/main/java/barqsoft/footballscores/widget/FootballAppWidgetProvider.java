@@ -77,12 +77,12 @@ public class FootballAppWidgetProvider extends AppWidgetProvider {
                 }
             }
 
-            //Set the data for the view
-            views.setTextViewText(R.id.game1, masterGames.size()>0 ? masterGames.get(0) : "");
-            views.setTextViewText(R.id.game2, masterGames.size()>1 ? masterGames.get(1) : "");
-            views.setTextViewText(R.id.game3, masterGames.size()>2 ? masterGames.get(2) : "");
-            views.setTextViewText(R.id.game4, masterGames.size()>3 ? masterGames.get(3) : "");
-            views.setTextViewText(R.id.game5, masterGames.size()>4 ? masterGames.get(4) : "");
+            //Set the data for the view - first upcoming game
+            if(masterGames.size() > 0){
+                views.setTextViewText(R.id.game1, masterGames.get(0));
+            } else {
+                views.setTextViewText(R.id.game1, context.getString(R.string.widget_message));
+            }
 
             //AppWidgetManager performs update on current widget
             appWidgetManager.updateAppWidget(widgetID, views);
